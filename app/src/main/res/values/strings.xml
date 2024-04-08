@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Financify</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_home">Главная</string>
+    <string name="title_two">Конвертер</string>
+    <string name="title_three">Калькулятор</string>
+    <string name="error">Ошибка ввода</string>
+    <string name="check_internet">Проверьте интернет соединение!</string>
+</resources>
