@@ -8,7 +8,6 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.my.application.financify.AppContext
 import com.my.application.financify.R
 import com.my.application.financify.adapters.RecyclerViewMyAppAdapter
 import com.my.application.financify.databinding.FragmentHomeBinding
@@ -28,7 +27,7 @@ class HomeFragment : Fragment(), HomeView {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        presenter = HomePresenter(this, StringsInteractorImp(AppContext.context), ModelImp())
+        presenter = HomePresenter(this, StringsInteractorImp(requireActivity()), ModelImp())
         return binding.root
     }
 
@@ -39,7 +38,7 @@ class HomeFragment : Fragment(), HomeView {
 
         binding.recyclerView.visibility = View.GONE
         binding.idLoaderGo.visibility = View.VISIBLE
-        binding.idLoaderGo.startAnimation(AnimationUtils.loadAnimation(AppContext.context,
+        binding.idLoaderGo.startAnimation(AnimationUtils.loadAnimation(requireActivity(),
             R.anim.anim_new
         ))
     }
@@ -68,7 +67,7 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun showToast(text: String) {
-        Toast.makeText(AppContext.context, text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

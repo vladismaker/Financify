@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.my.application.financify.AppContext
 import com.my.application.financify.R
 import com.my.application.financify.adapters.RecyclerViewAdapterTwo
 import com.my.application.financify.databinding.FragmentConvertBinding
@@ -26,7 +25,7 @@ class ConvertFragment : Fragment(), ConvertView {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentConvertBinding.inflate(inflater, container, false)
-        presenter = ConvertPresenter(this, StringsInteractorImp(AppContext.context), ModelImp())
+        presenter = ConvertPresenter(this, StringsInteractorImp(requireActivity()), ModelImp())
         return binding.root
     }
 
@@ -37,7 +36,7 @@ class ConvertFragment : Fragment(), ConvertView {
     }
 
     override fun showToast(text: String)  {
-        Toast.makeText(AppContext.context, text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), text, Toast.LENGTH_SHORT).show()
     }
 
     override fun getEditTextContent(): String = with(binding) {
