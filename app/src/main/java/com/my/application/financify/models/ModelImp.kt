@@ -20,15 +20,15 @@ import kotlin.coroutines.suspendCoroutine
 class ModelImp:Model {
     private var initCoroutine: Boolean = false
 
-        override suspend fun startRequest(urlStringText: String): String? = suspendCoroutine { contAviaFreeFlying ->
+        override suspend fun startRequest(url: String): String? = suspendCoroutine { contAviaFreeFlying ->
             CoroutineScope(Dispatchers.IO).launch {
                 initCoroutine=true
 
                 val client = OkHttpClient()
 
-                val url = URL(urlStringText)
+                val urlStringText = URL(url)
                 val request = Request.Builder()
-                    .url(url)
+                    .url(urlStringText)
                     .build()
                 client.newCall(request).enqueue(object : Callback {
                     override fun onFailure(call: Call, e: IOException) {

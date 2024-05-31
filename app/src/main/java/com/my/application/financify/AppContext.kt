@@ -1,17 +1,19 @@
 package com.my.application.financify
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 
 class AppContext : Application() {
     override fun onCreate() {
         super.onCreate()
-        context = applicationContext
+        instance = this
     }
 
     companion object {
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context
+        @Volatile
+        private lateinit var instance: AppContext
+
+        val context: Context
+            get() = instance.applicationContext
     }
 }

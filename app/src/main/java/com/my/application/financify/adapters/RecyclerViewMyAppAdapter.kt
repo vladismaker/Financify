@@ -8,12 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.my.application.financify.R
 
 class RecyclerViewMyAppAdapter(private val allDataList: MutableList<Array<String>>) : RecyclerView.Adapter<RecyclerViewMyAppAdapter.ViewHolder>() {
-    private var listener: Listener? = null
-
-    interface Listener {
-        fun onClick(position: Int)
-    }
-
     class ViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
 
     override fun getItemCount(): Int {
@@ -62,7 +56,8 @@ class RecyclerViewMyAppAdapter(private val allDataList: MutableList<Array<String
 
         tvName.text = allDataList[position][0]
         val doublePrice = allDataList[position][1].toDouble()
-        tvPrice.text = "%.3f".format(doublePrice)
+        val stringPrice = "%.3f".format(doublePrice)
+        tvPrice.text = stringPrice
         val dPercent = allDataList[position][2].toDouble()
         val stringOne = "%.2f".format(dPercent)
         val stringTwo = if(dPercent<0) {
